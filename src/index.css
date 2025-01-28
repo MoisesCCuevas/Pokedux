@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: rgba(20, 184, 166, 1);
+  user-select: none;
+}
+
+.divider {
+  background-color: rgba(30, 41, 59, 0.6);
+  width: 1px;
+  position: relative;
+}
+  
