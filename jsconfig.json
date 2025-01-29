@@ -9,6 +9,9 @@
       ],
       "@Assets/*": [
         "./src/assets/*"
+      ],
+      "@Actions/*": [
+        "./src/actions/*"
       ]
     }
   }

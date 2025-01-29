@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import Layout from '@Components/Layout';
 import Search from '@Components/Search';
 import CardList from '@Components/CardList';
 import Logo from '@/Assets/logo.svg';
 import { getPokemons } from './api';
+import { setPokemon as setPokemonAction } from '@Actions';
 
 const App = () => {
   const [pokemons, setPokemons] = React.useState([]);
@@ -30,4 +32,12 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  pokemons: state.pokemons,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setPokemon: (value) => dispatch(setPokemonAction(value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
