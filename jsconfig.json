@@ -12,6 +12,9 @@
       ],
       "@Actions/*": [
         "./src/actions/*"
+      ],
+      "@Api/*": [
+        "./src/api/*"
       ]
     }
   }

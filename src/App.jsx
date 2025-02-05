@@ -4,9 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import Layout from '@Components/Layout';
 import Search from '@Components/Search';
 import CardList from '@Components/CardList';
-import Logo from '@/Assets/logo.svg';
-import { getPokemons } from './api';
-import { setPokemon } from '@Actions';
+import Loader from '@Components/Loader';
+import Logo from '@Assets/logo.svg';
+import { getPokemons } from '@Api';
+import { getPokemonsDetails, setLoading, setFavorite } from '@Actions';
 
 const App = (
   // pokemons,
@@ -14,16 +15,25 @@ const App = (
 ) => {
   //const [pokemons, setPokemons] = React.useState([]);
   const pokemons = useSelector(state => state.pokemons);
+  const loading = useSelector(state => state.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchPokemons = async () => {
-      const response = await getPokemons();
-      dispatch(setPokemon(response));
+      dispatch(setLoading(true));
+      const responsePokemon = await getPokemons();
+      // const pokemonDetail = await Promise.all(
+      //   responsePokemon.map(async (pokemon) => await getPokemonDetail(pokemon.url))
+      // );
+      dispatch(getPokemonsDetails(responsePokemon));
     }
 
     fetchPokemons();
   }, []);
+
+  const handleFavorite = (id) => {
+    dispatch(setFavorite({ id: id }));
+  };
 
   return (
     <Layout>
@@ -32,7 +42,7 @@ const App = (
         <Search placeholder="Buscar..." />
       </div>
       <div className='flex justify-center p-5'>
-        <CardList items={pokemons} />
+        {loading ? <Loader /> : <CardList items={pokemons} onClickFavorite={handleFavorite} />}
       </div>
     </Layout>
   );
