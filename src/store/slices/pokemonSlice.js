@@ -43,9 +43,9 @@ export const pokemonSlice = createSlice({
       state.pokemonsFiltered = action.payload;
     },
     setFavorite: (state, action) => {
-      const pokemonIndex = state.pokemons.findIndex(pokemon => pokemon.id === action.payload.id);
+      const pokemonIndex = state.pokemonsFiltered.findIndex(pokemon => pokemon.id === action.payload.id);
       if (pokemonIndex !== -1) {
-        state.pokemons[pokemonIndex].fav = !state.pokemons[pokemonIndex].fav;
+        state.pokemonsFiltered[pokemonIndex].fav = !state.pokemonsFiltered[pokemonIndex].fav;
       }
     },
     setFilter: (state, action) => {
