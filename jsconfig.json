@@ -11,7 +11,7 @@
         "./src/assets/*"
       ],
       "@Actions/*": [
-        "./src/actions/*"
+        "./src/store/actions/*"
       ],
       "@Api/*": [
         "./src/api/*"
