@@ -12,7 +12,7 @@ const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const composedEnhancers = composeAlt(
   // using devtools extension (simple version)
   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(thunk, /* logger */)
+  applyMiddleware(thunk, logger)
 );
 
 const store = createStore(rootReducer, composedEnhancers);

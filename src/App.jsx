@@ -41,14 +41,20 @@ const App = (
   };
 
   const handleOnSearch = (e) => {
-    dispatch(setFilter(e.target.value));
+    e.preventDefault();
+    dispatch(setFilter(e.target[0].value));
+  }
+
+  const handleOnChange= (e) => {
+    e.preventDefault();
+    dispatch(setFilter(""));
   }
 
   return (
     <Layout>
       <img className="w-1/3 py-5" src={Logo} alt="logo" />
       <div className='lm:w-96 sm:w-80 ms:w-72 mx:w-64 px-5'>
-        <Search placeholder="Buscar..." onChange={handleOnSearch} />
+        <Search placeholder="Buscar..." onSearch={handleOnSearch} onChange={handleOnChange} />
       </div>
       <div className='flex justify-center p-5'>
         {loading ? <Loader /> : <CardList items={pokemons} onClickFavorite={handleFavorite} />}

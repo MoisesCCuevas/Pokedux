@@ -43,14 +43,14 @@ export const pokemonSlice = createSlice({
       state.pokemonsFiltered = action.payload;
     },
     setFavorite: (state, action) => {
-      const pokemonIndex = state.pokemonsFiltered.findIndex(pokemon => pokemon.id === action.payload.id);
+      const pokemonIndex = state.pokemons.findIndex(pokemon => pokemon.id === action.payload.id);
       if (pokemonIndex !== -1) {
-        state.pokemonsFiltered[pokemonIndex].fav = !state.pokemonsFiltered[pokemonIndex].fav;
+        state.pokemons[pokemonIndex].fav = !state.pokemons[pokemonIndex].fav;
       }
+      state.pokemonsFiltered = state.pokemons;
     },
     setFilter: (state, action) => {
-      const pokemonsFiltered = state.pokemons.filter( pokemon => pokemon.name.includes(action.payload));
-      state.pokemonsFiltered = pokemonsFiltered;
+      state.pokemonsFiltered = state.pokemons.filter(pokemon => pokemon.name.toLowerCase().indexOf(action.payload.toLowerCase()) !== -1);
     }
   }
 });
