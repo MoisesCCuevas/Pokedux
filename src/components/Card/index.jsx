@@ -10,7 +10,7 @@ const Card = (props) => {
     onClickFav
   } = props;
   return (
-    <section className="bg-white rounded-md shadow-md w-80 h-96 flex flex-col justify-between relative">
+    <section className="bg-white rounded-md shadow-md ml:w-80 mx:w-xs ms:w-sm h-96 flex flex-col justify-between relative">
       <button onClick={onClickFav} className="absolute top-5 right-5 flex items-center justify-center">
         {fav ? (
           <StarFilled className="text-yellow-400 size-5" />

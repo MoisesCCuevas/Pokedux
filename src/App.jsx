@@ -9,6 +9,7 @@ import Logo from '@Assets/logo.svg';
 // import { getPokemons } from '@Api';
 import { fetchPokemons, setFavorite, setFilter } from './store/slices/pokemonSlice';
 //import { getPokemonsDetails, setLoading, setFavorite } from '@Actions';
+import "./index.css";
 
 const App = (
   // pokemons,
@@ -46,7 +47,7 @@ const App = (
   return (
     <Layout>
       <img className="w-1/3 py-5" src={Logo} alt="logo" />
-      <div className='w-96'>
+      <div className='lm:w-96 sm:w-80 ms:w-72 mx:w-64 px-5'>
         <Search placeholder="Buscar..." onChange={handleOnSearch} />
       </div>
       <div className='flex justify-center p-5'>

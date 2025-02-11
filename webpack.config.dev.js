@@ -11,7 +11,7 @@ module.exports = {
     filename: "app.js",
   },
   resolve: {
-    extensions: [".wasm", ".ts", ".tsx", ".mjs", ".cjs", ".js", ".jsx", ".json"],
+    extensions: ['.js', '.jsx', '.json'],
     alias: {
       "@": path.resolve(__dirname, "src"),
       "@Components": path.resolve(__dirname, "src/components"),
@@ -40,8 +40,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        include: path.resolve(__dirname, 'src'),
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.svg|.png$/,
@@ -52,7 +51,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      template: "./public/index.html",
+      template: "./src/index.html",
       filename: "index.html",
     }),
     new MiniCssExtractPlugin({
